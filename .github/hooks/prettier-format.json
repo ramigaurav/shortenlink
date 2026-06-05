@@ -1,0 +1,32 @@
+{
+  "name": "prettier-format",
+  "description": "Automatically format generated code with Prettier after file creation",
+  "trigger": "PostToolUse",
+  "enabled": true,
+  "filePatterns": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.json",
+    "**/*.css",
+    "**/*.md"
+  ],
+  "excludePatterns": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.git/**"
+  ],
+  "action": {
+    "type": "shell",
+    "command": "npm run format -- --write",
+    "description": "Format files using Prettier"
+  },
+  "config": {
+    "runSilently": true,
+    "continueOnError": false,
+    "reportSuccess": false
+  }
+}

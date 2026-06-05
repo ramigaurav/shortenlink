@@ -1,19 +1,9 @@
-# Agent Manifest for shortenlink
-
 This repository uses `AGENTS.md` as the top-level manifest for LLM-driven agent behavior.
 
 ## Primary guidance
 
 - Read this file first.
-- ALWAYS read the relevant individual instruction file in `/docs/` before generating any code. This is incredibly important and must be done every time.
 - Keep code changes minimal, idiomatic, and aligned with the existing Next.js + TypeScript + Tailwind stack.
-
-## Agent behavior
-
-- Preserve current structure and conventions.
-- Use existing utilities and components before adding new ones.
-- Avoid introducing new runtime dependencies unless explicitly required.
-- Validate edits against TypeScript and ESLint when possible.
 
 ## Project focus
 
@@ -32,8 +22,7 @@ This repository uses `AGENTS.md` as the top-level manifest for LLM-driven agent 
 
 ## Code style and architecture
 
-- Prefer server components by default in `app/`.
-- Use `"use client"` only when a component requires client-side behavior.
+- Default to server components; only mark a component with `"use client"` if it needs local state, effects (useEffect), event handlers, or browser-only APIs. Document the reason in the component file header.
 - Use `const` and `let`; do not use `var`.
 - Keep exports consistent with the surrounding file style.
 - Use the `@/` alias for root-relative imports when appropriate.
@@ -52,8 +41,6 @@ This repository uses `AGENTS.md` as the top-level manifest for LLM-driven agent 
 - Use Tailwind utility classes in JSX.
 - Follow existing component patterns in `components/ui/`, especially `Button`.
 - Avoid creating raw global CSS rules unless required for a new feature.
-- Prefer existing design tokens and class names over inventing new style conventions.
-- For UI component guidance, see `docs/shadcn-ui-guidelines.md`.
 
 ## Database and backend
 
@@ -64,9 +51,7 @@ This repository uses `AGENTS.md` as the top-level manifest for LLM-driven agent 
 ## File and docs conventions
 
 - Only change files required to implement the request.
-- Add new markdown docs under `/docs/` for agent or architecture guidance only.
 - Keep documentation clear and concise.
-- For authentication behavior, see `docs/clerk-auth-guidelines.md`.
 - Do not add or modify files outside the intended scope without explicit user approval.
 
 ## Verification
@@ -78,6 +63,5 @@ This repository uses `AGENTS.md` as the top-level manifest for LLM-driven agent 
 ## Behavior expectations for LLMs
 
 - Be conservative: do not rewrite the entire app for a small fix.
-- Match the repository conventions exactly.
 - Explain assumptions only when needed and keep the implementation direct.
 - When uncertain, choose the safer solution and describe any remaining unknowns.
